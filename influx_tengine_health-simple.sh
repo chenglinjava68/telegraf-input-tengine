@@ -6,5 +6,5 @@ cluster="Tengine-1"
 server="10.71.19.153"
 health=":80/status?format=csv"
 curl -s --connect-timeout 1 -m 1 "http://$server$health" |awk -F ',' -v cluster=$cluster -v server=$server '{
-	print "nginx_health,cluster="cluster",host="server",index="$1" upstream=""\""$2"\""",name=""\""$3"\""",status=""\""$4"\""",rise_counts="$5",fall_counts="$6",check_type=""\""$7"\""",check_port=""\""$8"\""\
+	print "nginx_health,cluster="cluster",host="server",index="$1",upstream="$2",name="$3",status="$4",check_type="$7",check_port="$8" rise_counts="$5",fall_counts="$6\
 }'
